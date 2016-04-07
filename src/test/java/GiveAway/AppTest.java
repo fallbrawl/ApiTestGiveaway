@@ -22,8 +22,9 @@ public class AppTest
     public void getRequestFindCapital() throws JSONException {
 
         //Initializing Rest API's URL
-
-         final String APIUrl = "http://youmemeyou-api-prod.php-cd.attractgroup.com/api/v1/token"; //Initializing payload or API body
+        final String localka = "http://192.168.0.102:3037";
+        final String prod = "http://youmemeyou-api-prod.php-cd.attractgroup.com";
+        final String APIUrl = prod + "/api/v1/token"; //Initializing payload or API body
 //         String APIBody = "{\"grant_type\":\"client_credentials\",\"client_id\":\"vaspojhqwep9r58ghq3urvhpjpq3894ufg90843hrvpq3rihnvw\",\"client_secret\":\"client_secret\"}"; //e.g.- "{\"key1\":\"value1\",\"key2\":\"value2\"}" // Building request using requestSpecBuilder
 //
 //         RequestSpecBuilder builder = new RequestSpecBuilder();
@@ -39,10 +40,11 @@ public class AppTest
 //         //Asserting that result of Norway is Oslo
 //         Assert.assertEquals(result, "200");
 
-        final Map<String,String> param=new HashMap<>();
-        param.put("grant_type","client_credentials");
-        param.put("client_id","vaspojhqwep9r58ghq3urvhpjpq3894ufg90843hrvpq3rihnvw");
-        param.put("client_secret","qwvpe2gu4p9t5bh8wiuerhgvqwljwthibp24835hgbqudhngvlw");
+        final Map<String, String> param = new HashMap<>();
+
+        param.put("grant_type", "client_credentials");
+        param.put("client_id", "vaspojhqwep9r58ghq3urvhpjpq3894ufg90843hrvpq3rihnvw");
+        param.put("client_secret", "qwvpe2gu4p9t5bh8wiuerhgvqwljwthibp24835hgbqudhngvlw");
 
 //        for(int i=0;i<100;i++)
 //            new Thread(new Runnable() {
@@ -56,17 +58,17 @@ public class AppTest
 //                }
 //            }).start();
         try {
-            post(APIUrl,toJSON(param));
+            post(APIUrl, toJSON(param));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String toJSON(Map<String,String> map){
-        JSONObject ob=new JSONObject();
-        for(String key:map.keySet())
+    public String toJSON(Map<String, String> map) {
+        JSONObject ob = new JSONObject();
+        for (String key : map.keySet())
             try {
-                ob.put(key,map.get(key));
+                ob.put(key, map.get(key));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -80,11 +82,11 @@ public class AppTest
 
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(JSON, json);
-        Request request=new Request.Builder()
+        Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
         okhttp3.Response response = client.newCall(request).execute();
-       System.out.println(response.body().string());
+        System.out.println(response.body().string());
     }
 }
