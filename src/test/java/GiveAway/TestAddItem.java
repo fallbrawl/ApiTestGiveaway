@@ -34,13 +34,14 @@ public class TestAddItem
         final Map<String, Object> paramForItem = new HashMap<>();
         final Map<String, Object> paramForLogin = new HashMap<>();
 
+
         final String pathToImage = "/home/paul/testScreenShot.jpg";
 
         String[] logins = new String[3];
 
-        logins[0] = "emailglol0@gmail.com";
-        logins[1] = "emailglol1@gmail.com"; //PROD
-        logins[2] = "emailglol2@gmail.com";
+        logins[0] = "emaglol0@gmail.com";
+        logins[1] = "emaglol1@gmail.com"; //PROD
+        logins[2] = "emaglol2@gmail.com";
 
         //     logins[0] = "emaglol0@gmail.com";
         //     logins[1] = "emaglol1@gmail.com"; //LOCALKA
@@ -49,7 +50,7 @@ public class TestAddItem
 
         final String[] tokens = new String[3];
 
-        tokens[0] = "jXvd7jrELZyo7JwY7EaRqjj9vLZzGF4Y+lPEODGNkgw=";
+        tokens[0] = "MyJB1NvLxyce5vFVHt66ncDpZAEbn5hvL4q9hVMtp68=";
         tokens[1] = "s7QPDYGA6lgW10/Vg/2aKlIgyadV7PyzZn9rbpIpsbY=";
         tokens[2] = "BY+FX5jXvVCZPdH+5enKw2IR3up3LUQ3HfIaA0dP+eY=";
 
@@ -218,12 +219,14 @@ public class TestAddItem
     @Test
     public void registrationTest() {
 
-        final String APIUrl = "http://192.168.0.102:3037/api/v1/register";
+        final String localka = "http://192.168.0.102:3037";
+        final String prod = "http://youmemeyou-api-prod.php-cd.attractgroup.com";
+        final String APIUrl = "/api/v1/register";
         final Map<String, Object> param = new HashMap<>();
 
         String user_password = "attract";
         String user_name = "Billy Talent";
-        String access_token = "edA5la6qmRyRSi7kGwk4EFibKHy6ahms9cUVfhkcGHc=";
+        String access_token = "te4iHri9ZDZ7njEZc63WAEpGFk772LAofkOIRLKcoTg=";
 
         param.put("user_password", user_password);
         param.put("user_name", user_name);
@@ -233,9 +236,11 @@ public class TestAddItem
 
             param.put("user_email", String.format("emaglol%d@gmail.com", i));
 
+
             synchronized (Thread.currentThread()) {
                 try {
-                    post1(APIUrl, toJSON1(param));
+                    post1(prod + APIUrl, toJSON1(param));
+                    System.out.println(param);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
