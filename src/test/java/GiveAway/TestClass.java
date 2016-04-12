@@ -30,10 +30,46 @@ public class TestClass {
                 return fillHouse();
 
             }
+            case "category": {
+                return fillRandomCategory();
+
+            }
+            case "description": {
+                return fillRandomDescription();
+
+            }
+
             default:
                 System.out.println("pop");
         }
         return null;
+    }
+
+
+    private Object fillRandomDescription() {
+
+        String[] descriptions = {
+
+                "Я помню чудное мгновенье:",
+                "Передо мной явилась ты,",
+                "Как мимолетное виденье,",
+                "Как гений чистой красоты.",
+
+                "В томленьях грусти безнадежной",
+                "В тревогах шумной суеты,",
+                "Звучал мне долго голос нежный",
+                "И снились милые черты.",
+
+                "Шли годы. Бурь порыв мятежный",
+                "Рассеял прежние мечты,",
+                "И я забыл твой голос нежный,",
+                "Твои небесные черты."
+        };
+
+        String description = descriptions[new Random().nextInt(descriptions.length - 1)];
+        System.out.println(description);
+
+        return description;
     }
 
     private Object fillName() {
@@ -62,11 +98,34 @@ public class TestClass {
         names[19] = "\"><script>alert()</script>";
         names[20] = "232 + 1";
 
-
-                //names[(int)(Math.random()*21)];
         String name = names[new Random().nextInt(21)];
         System.out.println(name);
+
         return name;
+    }
+
+    private Object fillRandomCategory() {
+
+        String[] categories = {
+
+                "56f01ac6cb219685122cee4d",
+                "56f01ac6cb219685122cee4f",
+                "56f01ac6cb219685122cee51",
+                "56f01ac6cb219685122cee52",
+                "56f01ac6cb219685122cee53",
+                "56f01ac6cb219685122cee54",
+                "56f01ac6cb219685122cee55",
+                "56f01ac6cb219685122cee56",
+                "56f01ac6cb219685122cee57",
+                "56f01ac6cb219685122cee58",
+                "56f01ac6cb219685122cee4e",
+                "56f01ac6cb219685122cee50"
+        };
+
+        String category = categories[new Random().nextInt(categories.length - 1)];
+        System.out.println(category);
+
+        return category;
     }
 
     private Object uploadImage() {
