@@ -62,7 +62,7 @@ public class AddAndEditItem {
 
         for (int j = 0; j < 5; j++) {
 
-            paramForRegistration.put("user_email", String.format("emfglo%d@gmail.com", j));
+            paramForRegistration.put("user_email", String.format("emfgrelo%d@gmail.com", j));
 
             synchronized (Thread.currentThread()) {
                 try {
@@ -73,7 +73,7 @@ public class AddAndEditItem {
                 }
             }
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 500; i++) {
 
                 Thread.sleep(500);
                 JSONObject adress = new JSONObject();
@@ -109,7 +109,7 @@ public class AddAndEditItem {
 
                 JSONObject kakhochu = new JSONObject(kakoitoobject);
 
-                if(kakhochu.optInt("status")!=200)
+                if (kakhochu.optInt("status") != 200)
                     return;
 
                 String idURLThing = kakhochu.optJSONObject("data").optString("_id");
